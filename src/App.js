@@ -1,9 +1,22 @@
-import { Button, Box, Container, Typography, Stack } from "@mui/material";
-
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Box } from "@mui/system";
+import HomeScreen from "./CoreScreens/HomeScreen";
+import "./App.css";
 function App() {
   return (
-    <Box>
-      <Typography variant="h1">Boilerplate React Project</Typography>
+    <Box
+      sx={{
+        height: "100vh",
+        width: "100vw",
+        backgroundColor: "#E6EFDF",
+        padding: 1,
+      }}
+    >
+      <Router>
+        <Routes>
+          <Route path="/home" element={<HomeScreen />} />
+        </Routes>
+      </Router>
     </Box>
   );
 }
