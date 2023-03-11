@@ -25,10 +25,25 @@ export default function NavBar() {
         <Stack
           direction="row"
           flex={1}
+          display="flex"
           justifyContent="space-between"
           alignItems={"center"}
         >
           <Typography variant="h4">Highgate</Typography>
+
+          <Stack
+            ml={5}
+            direction="row"
+            flex={1}
+            spacing={2}
+            display="flex"
+            justifyContent={"space-evenly"}
+          >
+            <Typography variant="subtitle1">HOME</Typography>
+            <Typography variant="subtitle1">ANALYSE</Typography>
+            <Typography variant="subtitle1">PROJECTS</Typography>
+            <Typography variant="subtitle1">GOALS</Typography>
+          </Stack>
         </Stack>
       </ToolbarStyle>
     </Box>

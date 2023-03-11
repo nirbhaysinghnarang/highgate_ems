@@ -1,8 +1,7 @@
 import { styled } from "@mui/material/styles";
 import { Box, Container, Typography, Stack, Card } from "@mui/material";
 import Page from "../Components/Page";
-import { Toolbar } from "@mui/material";
-import NavBar from "../Components/NavBar";
+import Snapshot from "../Components/Snapshot";
 const RootStyle = styled(Page)(({ theme }) => ({
   overflowY: "scroll",
   [theme.breakpoints.up("md")]: {
@@ -13,21 +12,24 @@ const RootStyle = styled(Page)(({ theme }) => ({
 export default function HomeScreen() {
   return (
     <RootStyle title="Home | Highgate EMS ">
-      <Container maxWidth="lg">
+      <Container maxWidth="lg" sx={{ display: "flex", flex: 1 }}>
         <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <Stack direction="column" sx={{ width: "100%", height: "100%" }}>
+          <Stack
+            direction="column"
+            sx={{ width: "100%", height: "100%", display: "flex", flex: 1 }}
+          >
             <Stack
               direction="row"
               justifyContent="space-evenly"
               spacing={2}
               sx={{ width: "100%" }}
             >
-              <Card sx={{ flexGrow: 1, width: 200, height: 200 }}>
-                <Typography> Hello</Typography>
-              </Card>
-              <Card sx={{ flexGrow: 1, width: 200, height: 200 }}>
-                <Typography> Hello</Typography>
-              </Card>
+              <Snapshot
+                power="166 kwH"
+                waste="166 lbs"
+                water="166 litres"
+                hours="166 hours"
+              ></Snapshot>
             </Stack>
           </Stack>
         </Box>

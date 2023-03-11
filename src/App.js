@@ -13,9 +13,8 @@ function App() {
       <Box
         sx={{
           height: "100vh",
-          width: "100vw",
           backgroundColor: "#E6EFDF",
-          padding: 1,
+          padding: 4,
         }}
       >
         <Router>

@@ -5,7 +5,7 @@ import NavBar from "./NavBar";
 import { Card, Stack } from "@mui/material";
 // ----------------------------------------------------------------------
 const Page = forwardRef(({ children, title = "", ...other }, ref) => (
-  <Card ref={ref} {...other}>
+  <Card p={2} sx={{ borderRadius: 5 }} ref={ref} {...other}>
     <Stack direction="column">
       <Helmet>
         <title>{title}</title>
