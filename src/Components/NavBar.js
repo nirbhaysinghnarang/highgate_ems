@@ -26,9 +26,9 @@ export default function NavBar() {
           sx={{ flexGrow: 1 }}
           justifyContent="space-around"
           alignItems={"center"}
-          spacing={2}
+          spacing={5}
         >
-          <Typography variant="h6">Highgate</Typography>
+          <Typography variant="h5">Highgate</Typography>
           <Box sx={{ flexGrow: 1 }} />
           <Typography>Home</Typography>
           <Typography>Analyse</Typography>
