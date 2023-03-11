@@ -18,22 +18,17 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 
 export default function NavBar() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <ToolbarStyle style={{ flex: 1, justifyContent: "space-between" }}>
+    <Box sx={{ flexGrow: 1, width: "100%" }}>
+      <ToolbarStyle
+        style={{ flex: 1, justifyContent: "space-between", width: "100%" }}
+      >
         <Stack
           direction="row"
           flex={1}
-          sx={{ flexGrow: 1 }}
-          justifyContent="space-around"
+          justifyContent="space-between"
           alignItems={"center"}
-          spacing={5}
         >
-          <Typography variant="h5">Highgate</Typography>
-          <Box sx={{ flexGrow: 1 }} />
-          <Typography>Home</Typography>
-          <Typography>Analyse</Typography>
-          <Typography>Projects</Typography>
-          <Typography>Goals</Typography>
+          <Typography variant="h4">Highgate</Typography>
         </Stack>
       </ToolbarStyle>
     </Box>
