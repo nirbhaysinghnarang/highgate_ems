@@ -6,36 +6,40 @@ function SnapshotElement({ snapshotIcon, text }) {
   return (
     <Stack direction="row" spacing={2} alignItems="center">
       {snapshotIcon}
-      <Typography variant="body1">{text}</Typography>
+      <Typography sx={{ fontSize: "large" }}>{text}</Typography>
     </Stack>
   );
 }
 export default function Snapshot({ power, water, waste, hours }) {
   return (
-    <Card
-      sx={{ flexGrow: 1, width: "100%", padding: 4, borderRadius: 10 }}
-      elevation={5}
-    >
-      <Typography variant="h5" gutterBottom>
+    <Card sx={{ width: "100%", padding: 4, borderRadius: 10 }} elevation={5}>
+      <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
         {" "}
         Snapshot
       </Typography>
 
-      <Stack direction="column">
+      <Stack direction="column" spacing={2}>
         <SnapshotElement
-          snapshotIcon={<Power></Power>}
+          snapshotIcon={<Power fontSize="large" htmlColor="#6F7378"></Power>}
           text={power}
         ></SnapshotElement>
         <SnapshotElement
-          snapshotIcon={<Opacity></Opacity>}
+          snapshotIcon={
+            <Opacity fontSize="large" htmlColor="#6F7378"></Opacity>
+          }
           text={water}
         ></SnapshotElement>
         <SnapshotElement
-          snapshotIcon={<Delete></Delete>}
+          snapshotIcon={<Delete fontSize="large" htmlColor="#6F7378"></Delete>}
           text={waste}
         ></SnapshotElement>
         <SnapshotElement
-          snapshotIcon={<VolunteerActivism></VolunteerActivism>}
+          snapshotIcon={
+            <VolunteerActivism
+              fontSize="large"
+              htmlColor="#6F7378"
+            ></VolunteerActivism>
+          }
           text={hours}
         ></SnapshotElement>
       </Stack>

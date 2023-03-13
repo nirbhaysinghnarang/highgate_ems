@@ -2,18 +2,22 @@ import PropTypes from "prop-types";
 import { Helmet } from "react-helmet-async";
 import { forwardRef } from "react";
 import NavBar from "./NavBar";
-import { Card, Stack } from "@mui/material";
+import { Card, Container } from "@mui/material";
 // ----------------------------------------------------------------------
 const Page = forwardRef(({ children, title = "", ...other }, ref) => (
-  <Card p={2} sx={{ borderRadius: 5 }} ref={ref} {...other}>
-    <Stack direction="column">
+  <Card
+    p={2}
+    sx={{ borderRadius: 5, width: "100%", height: "100%" }}
+    ref={ref}
+    {...other}
+  >
+    <Container>
       <Helmet>
         <title>{title}</title>
       </Helmet>
       <NavBar></NavBar>
-
       {children}
-    </Stack>
+    </Container>
   </Card>
 ));
 

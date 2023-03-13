@@ -2,7 +2,8 @@ import { createTheme } from "@mui/material/styles";
 export const AppTheme = createTheme({
   typography: {
     allVariants: {
-      fontFamily: "Oswald",
+      fontFamily: "Futura",
+      color: "#6F7378",
     },
   },
 

@@ -18,7 +18,7 @@ const ToolbarStyle = styled(Toolbar)(({ theme }) => ({
 
 export default function NavBar() {
   return (
-    <Box sx={{ flexGrow: 1, width: "100%" }}>
+    <Box sx={{ flexGrow: 1, width: "100%", mb: 2 }}>
       <ToolbarStyle
         style={{ flex: 1, justifyContent: "space-between", width: "100%" }}
       >
