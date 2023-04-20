@@ -20,7 +20,7 @@ export default function NavBar() {
   return (
     <Box sx={{ flexGrow: 1, width: "100%", mb: 2 }}>
       <ToolbarStyle
-        style={{ flex: 1, justifyContent: "space-between", width: "100%" }}
+        style={{ flex: 1, justifyContent: "start", width: "100%" }}
       >
         <Stack
           direction="row"

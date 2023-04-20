@@ -12,10 +12,10 @@ function SnapshotElement({ snapshotIcon, text }) {
 }
 export default function Snapshot({ power, water, waste, hours }) {
   return (
-    <Card sx={{ width: "100%", padding: 4, borderRadius: 10 }} elevation={5}>
+    <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
       <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
         {" "}
-        Snapshot
+        Realized Savings
       </Typography>
 
       <Stack direction="column" spacing={2}>

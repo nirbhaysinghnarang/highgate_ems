@@ -1,9 +1,10 @@
 import { styled } from "@mui/material/styles";
-import { Box, Container, Stack, Card } from "@mui/material";
+import { useState } from "react";
+import { Box, Container, Stack, Card, Typography } from "@mui/material";
 import Page from "../Components/Page";
 import Snapshot from "../Components/Snapshot";
-
 import { ComplianceAnalytic } from "../Components/ComplianceAnalytic";
+import { ButtonNav } from "../Components/ButtonNav";
 const RootStyle = styled(Page)(({ theme }) => ({
   overflowY: "scroll",
   [theme.breakpoints.up("md")]: {
@@ -12,38 +13,63 @@ const RootStyle = styled(Page)(({ theme }) => ({
 }));
 
 export default function HomeScreen() {
+  const [view, setView] = useState('HOME')
   return (
-    <RootStyle title="Home | Highgate EMS ">
+    <Stack direction="row" alignItems="center">
+      <ButtonNav
+        view={view}
+        handleChange={setView}
+      />
+      <RootStyle title="Home | Highgate EMS ">
       <Container maxWidth="lg" sx={{ display: "flex", flex: 1 }}>
-        <Stack direction="column" sx={{ width: "100%" }}>
-          <Stack
-            direction="row"
-            justifyContent="space-evenly"
-            spacing={2}
-            sx={{ width: "100%" }}
-          >
-            <Snapshot
-              power="166 kwH"
-              waste="166 lbs"
-              water="166 litres"
-              hours="166 hours"
-            ></Snapshot>
-            <Card
-              sx={{
-                padding: 4,
-                width: "100%",
-                borderRadius: 10,
-              }}
-              elevation={5}
-            >
-              <ComplianceAnalytic
-                series={[44, 100 - 44]}
-                labels={["Compliant", "Non-Compliant"]}
-              ></ComplianceAnalytic>
-            </Card>
-          </Stack>
-        </Stack>
+        {view=="HOME" && <Rollout></Rollout>}
+        {view=="POWER" && <Electricity></Electricity>}
+        {view=="HOURS" && <Hours></Hours>}
+        {view=="TRASH" && <Trash></Trash>}
+
+        {view=="WATER" && <Water></Water>}
+        {view=="PAPER" && <Paper></Paper>}
+
+        
       </Container>
-    </RootStyle>
+      </RootStyle>
+    </Stack>
+
   );
+
+  function Rollout(){
+    return (
+      <Typography>Rollout</Typography>
+    );
+  }
+
+  function Electricity(){
+    return (
+      <Typography>Electricity</Typography>
+    );
+  }
+
+  function Water(){
+    return (
+      <Typography>Water</Typography>
+    );
+  }
+
+  function Hours(){
+    return (
+      <Typography>Hours</Typography>
+    );
+  }
+
+  function Paper(){
+    return (
+      <Typography>Paper</Typography>
+    );
+  }
+
+  function Trash(){
+    return (
+      <Typography>Trash</Typography>
+    );
+  }
 }

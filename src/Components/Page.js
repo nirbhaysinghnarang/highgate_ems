@@ -7,7 +7,7 @@ import { Card, Container } from "@mui/material";
 const Page = forwardRef(({ children, title = "", ...other }, ref) => (
   <Card
     p={2}
-    sx={{ borderRadius: 5, width: "100%", height: "100%" }}
+    sx={{ borderRadius: 5, width: "100%", height: "100%", }}
     ref={ref}
     {...other}
   >
