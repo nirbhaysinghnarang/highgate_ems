@@ -10,7 +10,10 @@ import VolunteerSnapshot from "../Components/VolunteerSnapshot";
 import { VolunteeringAnalytic } from "../Components/VolunteeringAnalytic";
 import { SavingsAnalytic } from "../Components/SavingsAnalytic";
 import { Label, LineAxis } from "@mui/icons-material";
-
+import VolunteerMock from "../Data/VolunteerMock";
+import VolunteerNewsComponent from "../Components/VolunteerNews";
+import { CommentBoard } from "../Components/CommentBoard";
+import CommentsMock from "../Data/CommentsMock";
 const RootStyle = styled(Page)(({ theme }) => ({
   overflowY: "scroll",
   [theme.breakpoints.up("md")]: {
@@ -57,6 +60,7 @@ export default function HomeScreen() {
             series={[44, 100 - 44]}
             labels={["Compliant", "Non-Compliant"]}
           ></ComplianceAnalytic>
+          <CommentBoard comments={CommentsMock}></CommentBoard>
         </Stack>
 
 
@@ -108,11 +112,14 @@ export default function HomeScreen() {
 
   function Hours() {
     return (
-      <Stack direction="row" justifyContent="space-evenly" spacing={2}>
+      <Stack direction="row" justifyContent="space-evenly" spacing={2} flex={1} flexGrow={2}>
         <Stack direction="column" spacing={2}>
           <VolunteerSnapshot hours={"30,649"} raised={"USD 30,000"} engagement={"500 people"}> </VolunteerSnapshot>
           <VolunteeringAnalytic series={[1,2,3]} labels={["Food", "Env", "Edu", "Health", "Misc"]}></VolunteeringAnalytic>
-        </Stack>
+        </Stack> 
+          <Stack direction="column" flex={1} flexGrow={2}>
+            <VolunteerNewsComponent items={VolunteerMock}></VolunteerNewsComponent>
+          </Stack>
 
 
 

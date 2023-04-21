@@ -12,12 +12,7 @@ export function ButtonNav({view, handleChange}) {
       style={{padding:2, backgroundColor:"rgba(36,89,97,1)", borderRadius:5, marginRight:-20, zIndex:100}}
       orientation="vertical"
       value={selected}
-      onChange={(_, value)=>
-        {
-          console.log(value)
-          setSelected(value)
-        }
-       }
+      onChange={(_, value)=>value === null ? "HOME" : setSelected(value)}
       exclusive
     >
     {Object.keys(buttonStates).map(key=>
