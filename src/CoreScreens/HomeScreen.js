@@ -1,5 +1,5 @@
 import { styled } from "@mui/material/styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Box, Container, Stack, Card, Typography } from "@mui/material";
 import Page from "../Components/Page";
 import Snapshot from "../Components/Snapshot";
@@ -17,6 +17,7 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 export default function HomeScreen() {
   const [view, setView] = useState('HOME')
+
   return (
     <Stack direction="row" alignItems="center">
       <ButtonNav
