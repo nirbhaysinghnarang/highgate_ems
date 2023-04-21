@@ -11,7 +11,7 @@ import { Stack, Typography, Card } from "@mui/material";
 //     />
 // );
 
-export function SavingsAnalytic({ projectSeries, projectLabels, goalSeries, goalLabels }) {
+export function SavingsAnalytic({ projectSeries, projectxaxis}) {
     return (
         <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
             <Stack direction="column">
@@ -22,21 +22,11 @@ export function SavingsAnalytic({ projectSeries, projectLabels, goalSeries, goal
                     <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div>
                     <Chart
                         series={projectSeries}
-                        labels={projectLabels}
-                        type="donut"
-                        width="200"
+                        type="bar"
+                        width="450"
                         options={{
-                            legend:{
-                                show:false
-                            },
-                            series: projectSeries,
-                            labels: projectLabels,
-                            plotOptions: {
-                                pie: {
-                                    showLabels:false,
-                                    expandOnClick: true,
-                                },
-                            },
+                            chart: {id: "basic-bar"},
+                            xaxis: projectxaxis,
                         }}
                     ></Chart>
             </Stack>

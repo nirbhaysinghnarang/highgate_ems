@@ -9,6 +9,7 @@ import { ProgressAnaytic } from "../Components/ProgressAnalytic";
 import VolunteerSnapshot from "../Components/VolunteerSnapshot";
 import { VolunteeringAnalytic } from "../Components/VolunteeringAnalytic";
 import { SavingsAnalytic } from "../Components/SavingsAnalytic";
+import { Label, LineAxis } from "@mui/icons-material";
 
 const RootStyle = styled(Page)(({ theme }) => ({
   overflowY: "scroll",
@@ -77,10 +78,15 @@ export default function HomeScreen() {
       </Typography>
       </Card>
       <SavingsAnalytic 
-          goalSeries={[44, 100 ,44, 100]}
-          goalLabels={["Not started", "On track", "Falling short", "Done"]}
-          projectSeries={[44, 100 ,44, 100]}
-          projectLabels={["Not started", "On track", "Falling short", "Done"]}></SavingsAnalytic>
+          projectSeries={[
+        {
+          name: "Energy Savings",
+          data: [150, 90, 110, 80, 70, 260, 220, 50, 150, 200, 90, 150]
+        }
+      ]}
+          projectxaxis={{
+          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        }}></SavingsAnalytic>
       </Stack>
       <Stack direction="column" flex={1} flexGrow={2} spacing={2}>
           <ComplianceAnalytic
