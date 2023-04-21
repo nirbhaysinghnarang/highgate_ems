@@ -12,7 +12,7 @@ function SnapshotElement({ snapshotIcon, text }) {
 }
 export default function Snapshot({ power, water, waste, hours }) {
   return (
-    <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
+    <Card sx={{ padding: 4, borderRadius: 5 }} elevation={5}>
       <Typography variant="h6" gutterBottom sx={{ mb: 3 }}>
         {" "}
         Realized Savings

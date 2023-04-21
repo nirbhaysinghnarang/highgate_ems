@@ -1,29 +1,26 @@
 import Chart from "react-apexcharts";
-import { Stack, Typography, Card } from "@mui/material";
+import { Stack, Typography, Card, Divider } from "@mui/material";
 
-// const ColoredLine = ({ color }) => (
-//     <hr
-//         style={{
-//             color: color,
-//             backgroundColor: color,
-//             height: 5
-//         }}
-//     />
-// );
 
-export function SavingsAnalytic({ projectSeries, projectxaxis}) {
+
+export function SavingsAnalytic({ projectSeries, projectxaxis, cardStyle, graphHeight, graphWidth}) {
     return (
-        <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
-            <Stack direction="column">
-                    <Typography variant="h5" gutterBottom>
+        <Card sx={{ padding: 4, borderRadius: 5 }} elevation={5} style={cardStyle}>
+            <Stack direction="column" divider={<Divider orientation="horizontal"/>}>
+                    <Typography variant="subtitle1" align="center" gutterBottom>
                         {" "}
                         Reported Energy Savings
                     </Typography>
-                    <div style={{ borderTop: "2px solid #fff ", marginLeft: 20, marginRight: 20 }}></div>
+                    <Typography variant="subtitle1" align="center" gutterBottom gutterTop>
+                        {" "}
+                        Total:
+                        50,000kW
+                    </Typography>
                     <Chart
                         series={projectSeries}
                         type="bar"
-                        width="450"
+                        width= {graphWidth}
+                        height= {graphHeight}
                         options={{
                             chart: {id: "basic-bar"},
                             xaxis: projectxaxis,
