@@ -8,6 +8,8 @@ import { ButtonNav } from "../Components/ButtonNav";
 import { ProgressAnaytic } from "../Components/ProgressAnalytic";
 import VolunteerSnapshot from "../Components/VolunteerSnapshot";
 import { VolunteeringAnalytic } from "../Components/VolunteeringAnalytic";
+import { SavingsAnalytic } from "../Components/SavingsAnalytic";
+
 const RootStyle = styled(Page)(({ theme }) => ({
   overflowY: "scroll",
   [theme.breakpoints.up("md")]: {

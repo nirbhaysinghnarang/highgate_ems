@@ -1,7 +1,7 @@
 import Chart from "react-apexcharts";
 import { Stack, Typography, Card } from "@mui/material";
 
-export function ProgressAnaytic({ projectSeries, projectLabels, goalSeries, goalLabels }) {
+export function SavingsAnalytic({ projectSeries, projectLabels, goalSeries, goalLabels }) {
     return (
         <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
             <Stack direction="row">
