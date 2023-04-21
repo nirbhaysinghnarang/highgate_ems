@@ -6,6 +6,8 @@ import Snapshot from "../Components/Snapshot";
 import { ComplianceAnalytic } from "../Components/ComplianceAnalytic";
 import { ButtonNav } from "../Components/ButtonNav";
 import { ProgressAnaytic } from "../Components/ProgressAnalytic";
+import VolunteerSnapshot from "../Components/VolunteerSnapshot";
+import { VolunteeringAnalytic } from "../Components/VolunteeringAnalytic";
 const RootStyle = styled(Page)(({ theme }) => ({
   overflowY: "scroll",
   [theme.breakpoints.up("md")]: {
@@ -45,17 +47,12 @@ export default function HomeScreen() {
           goalLabels={["Not started", "On track", "Falling short", "Done"]}
           projectSeries={[44, 100 ,44, 100]}
           projectLabels={["Not started", "On track", "Falling short", "Done"]}></ProgressAnaytic>
-
         </Stack>
-
         <Stack direction="column" flex={1} flexGrow={2} spacing={2}>
-            
           <ComplianceAnalytic
             series={[44, 100 - 44]}
             labels={["Compliant", "Non-Compliant"]}
           ></ComplianceAnalytic>
-
-
         </Stack>
 
 
@@ -77,7 +74,15 @@ export default function HomeScreen() {
 
   function Hours() {
     return (
-      <Typography>Hours</Typography>
+      <Stack direction="row" justifyContent="space-evenly" spacing={2}>
+        <Stack direction="column" spacing={2}>
+          <VolunteerSnapshot hours={"30,649"} raised={"USD 30,000"} engagement={"500 people"}> </VolunteerSnapshot>
+          <VolunteeringAnalytic series={[1,2,3]} labels={["Food", "Env", "Edu", "Health", "Misc"]}></VolunteeringAnalytic>
+        </Stack>
+
+
+
+      </Stack>
     );
   }
 

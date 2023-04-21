@@ -3,7 +3,7 @@ export const AppTheme = createTheme({
   typography: {
     allVariants: {
       fontFamily: "Futura",
-      color: "#6F7378",
+      color: "black",
     },
   },
 
