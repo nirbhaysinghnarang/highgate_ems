@@ -14,7 +14,7 @@ function App() {
         sx={{
           height: "100vh",
           backgroundColor: "#E6EFDF",
-          padding: 4,
+          padding: 2,
         }}
       >
         <Router>

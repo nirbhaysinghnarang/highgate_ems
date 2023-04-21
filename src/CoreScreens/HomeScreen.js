@@ -65,17 +65,17 @@ export default function HomeScreen() {
 
   function Electricity() {
     return (
-      <Stack direction="row" justifyContent="space-evenly" spacing={2} flex={1}>
-      <Stack direction="column" flex={1} flexGrow={1} spacing={3}>
-      <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
-      <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
-        {" "}
-        $30,469
+      <Stack direction="row" justifyContent="flex-start" spacing={2} flex={1}>
+      <Stack direction="column" flex={1} flexGrow={2} spacing={2}>
+      <Card sx={{ padding: 2, borderRadius: 5 }} elevation={5} style = {{width:"100", height:"100"}}>
+      <Stack direction="column" spacing={2} flex={1}>
+      <Typography variant="h4" sx={{ mb: 3 }}>
+        {"$30,469"}
       </Typography>
       <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
-        {" "}
-        Realized Savings
+        {"Realized Savings"}
       </Typography>
+      </Stack>
       </Card>
       <SavingsAnalytic 
           projectSeries={[
@@ -85,14 +85,29 @@ export default function HomeScreen() {
         }
       ]}
           projectxaxis={{
-          categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        }}></SavingsAnalytic>
+            //["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+          categories: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        }}
+        cardStyle = {{width:"100", height:"700"}}
+        graphHeight = "300"
+        graphWidth={"300"}>
+        </SavingsAnalytic>
       </Stack>
       <Stack direction="column" flex={1} flexGrow={2} spacing={2}>
           <ComplianceAnalytic
+            series={[43, 100 - 44]}
+            labels={["Compliant", "Non-Compliant"]}
+          ></ComplianceAnalytic>
+          <Stack direction="row" justifyContent="space-evenly" spacing={1} flex={1}>
+          <ComplianceAnalytic
+            series={[20, 100 - 44]}
+            labels={["Compliant", "Non-Compliant"]}
+          ></ComplianceAnalytic>
+            <ComplianceAnalytic
             series={[44, 100 - 44]}
             labels={["Compliant", "Non-Compliant"]}
           ></ComplianceAnalytic>
+          </Stack>
         </Stack>
       </Stack>
 

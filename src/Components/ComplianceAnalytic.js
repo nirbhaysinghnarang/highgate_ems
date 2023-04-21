@@ -3,7 +3,7 @@ import { Stack, Typography, Card } from "@mui/material";
 
 export function ComplianceAnalytic({ series, labels }) {
   return (
-    <Card sx={{ padding: 4, borderRadius: 10, width:"100%" }} elevation={5}>
+    <Card sx={{ padding: 4, borderRadius: 5, width:"100%" }} elevation={5}>
       <Stack direction="column">
       <Typography variant="h5" gutterBottom>
         {" "}
