@@ -13,35 +13,40 @@ function SnapshotElement({ snapshotIcon, text }) {
 export default function Snapshot({ power, water, waste, hours }) {
   return (
     <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
-      <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+      <Typography variant="h6" gutterBottom sx={{ mb: 3 }}>
         {" "}
         Realized Savings
       </Typography>
 
       <Stack direction="column" spacing={2}>
-        <SnapshotElement
-          snapshotIcon={<Power fontSize="large" htmlColor="#6F7378"></Power>}
-          text={power}
-        ></SnapshotElement>
-        <SnapshotElement
-          snapshotIcon={
-            <Opacity fontSize="large" htmlColor="#6F7378"></Opacity>
-          }
-          text={water}
-        ></SnapshotElement>
-        <SnapshotElement
-          snapshotIcon={<Delete fontSize="large" htmlColor="#6F7378"></Delete>}
-          text={waste}
-        ></SnapshotElement>
-        <SnapshotElement
-          snapshotIcon={
-            <VolunteerActivism
-              fontSize="large"
-              htmlColor="#6F7378"
-            ></VolunteerActivism>
-          }
-          text={hours}
-        ></SnapshotElement>
+        <Stack direction="row" spacing={1}  alignItems={"center"} justifyContent="space-around">
+          <SnapshotElement
+            snapshotIcon={<Power fontSize="large" htmlColor="#6F7378"></Power>}
+            text={power}
+          ></SnapshotElement>
+          <SnapshotElement
+            snapshotIcon={
+              <Opacity fontSize="large" htmlColor="#6F7378"></Opacity>
+            }
+            text={water}
+          ></SnapshotElement>
+        </Stack>
+        <Stack direction="row" spacing={1}  alignItems={"center"} justifyContent="space-around">
+          <SnapshotElement
+            snapshotIcon={<Delete fontSize="large" htmlColor="#6F7378"></Delete>}
+            text={waste}
+          ></SnapshotElement>
+          <SnapshotElement
+            snapshotIcon={
+              <VolunteerActivism
+                fontSize="large"
+                htmlColor="#6F7378"
+              ></VolunteerActivism>
+            }
+            text={hours}
+          ></SnapshotElement>
+        </Stack>
+
       </Stack>
     </Card>
   );
