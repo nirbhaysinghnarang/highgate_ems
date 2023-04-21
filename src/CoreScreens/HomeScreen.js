@@ -62,7 +62,32 @@ export default function HomeScreen() {
 
   function Electricity() {
     return (
-      <Typography>Electricity</Typography>
+      <Stack direction="row" justifyContent="space-evenly" spacing={2} flex={1}>
+      <Stack direction="column" flex={1} flexGrow={1} spacing={3}>
+      <Card sx={{ padding: 4, borderRadius: 10 }} elevation={5}>
+      <Typography variant="h4" gutterBottom sx={{ mb: 3 }}>
+        {" "}
+        $30,469
+      </Typography>
+      <Typography variant="h5" gutterBottom sx={{ mb: 3 }}>
+        {" "}
+        Realized Savings
+      </Typography>
+      </Card>
+      <SavingsAnalytic 
+          goalSeries={[44, 100 ,44, 100]}
+          goalLabels={["Not started", "On track", "Falling short", "Done"]}
+          projectSeries={[44, 100 ,44, 100]}
+          projectLabels={["Not started", "On track", "Falling short", "Done"]}></SavingsAnalytic>
+      </Stack>
+      <Stack direction="column" flex={1} flexGrow={2} spacing={2}>
+          <ComplianceAnalytic
+            series={[44, 100 - 44]}
+            labels={["Compliant", "Non-Compliant"]}
+          ></ComplianceAnalytic>
+        </Stack>
+      </Stack>
+
     );
   }
 
