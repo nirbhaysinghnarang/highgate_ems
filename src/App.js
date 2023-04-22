@@ -23,7 +23,6 @@ function App() {
             <Route path="/auth" element={<LoginScreen></LoginScreen>}/>
             <Route path="/home" element={<HomeScreen />} />
             <Route path="*" element={<HomeScreen />} />
-
           </Routes>
         </Router>
       </Box>
