@@ -21,7 +21,6 @@ function App() {
           <Routes>
             <Route path="/home" element={<HomeScreen />} />
             <Route path="*" element={<HomeScreen />} />
-
           </Routes>
         </Router>
       </Box>
