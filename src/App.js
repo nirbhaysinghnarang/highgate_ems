@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/system";
 import HomeScreen from "./CoreScreens/HomeScreen";
+import LoginScreen from "./CoreScreens/LoginScreen";
 import { ThemeProvider } from "@mui/material/styles";
 import { AppTheme } from "./Theme.js";
 import "./App.css";
@@ -19,6 +20,7 @@ function App() {
       >
         <Router>
           <Routes>
+            <Route path="/auth" element={<LoginScreen></LoginScreen>}/>
             <Route path="/home" element={<HomeScreen />} />
             <Route path="*" element={<HomeScreen />} />
 

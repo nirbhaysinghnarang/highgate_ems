@@ -4,7 +4,7 @@ import { forwardRef } from "react";
 import NavBar from "./NavBar";
 import { Card, Container } from "@mui/material";
 // ----------------------------------------------------------------------
-const Page = forwardRef(({ children, title = "", ...other }, ref) => (
+const Page = forwardRef(({ children, title = "",isLogin=false, ...other  }, ref) => (
   <Card
     p={2}
     sx={{ borderRadius: 5, width: "100%", height: "100%", }}
@@ -15,7 +15,7 @@ const Page = forwardRef(({ children, title = "", ...other }, ref) => (
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <NavBar></NavBar>
+      {!isLogin && <NavBar></NavBar>}
       {children}
     </Container>
   </Card>
