@@ -130,13 +130,30 @@ export default function HomeScreen() {
 
   function Hours() {
     return (
-      <Stack direction="row" justifyContent="space-evenly" spacing={2} flex={1} flexGrow={2}>
+      <Stack
+        direction="row"
+        justifyContent="space-evenly"
+        spacing={2}
+        flex={1}
+        flexGrow={2}
+      >
         <Stack direction="column" spacing={2}>
-          <VolunteerSnapshot hours={"30,649"} raised={"USD 30,000"} engagement={"500 people"}> </VolunteerSnapshot>
-          <VolunteeringAnalytic series={[1, 2, 3]} labels={["Food", "Env", "Edu", "Health", "Misc"]}></VolunteeringAnalytic>
+          <VolunteerSnapshot
+            hours={"30,649"}
+            raised={"USD 30,000"}
+            engagement={"500 people"}
+          >
+            {" "}
+          </VolunteerSnapshot>
+          <VolunteeringAnalytic
+            series={[1, 2, 3]}
+            labels={["Food", "Env", "Edu", "Health", "Misc"]}
+          ></VolunteeringAnalytic>
         </Stack>
         <Stack direction="column" flex={1} flexGrow={2}>
-          <VolunteerNewsComponent items={VolunteerMock}></VolunteerNewsComponent>
+          <VolunteerNewsComponent
+            items={VolunteerMock}
+          ></VolunteerNewsComponent>
         </Stack>
       </Stack>
     );
