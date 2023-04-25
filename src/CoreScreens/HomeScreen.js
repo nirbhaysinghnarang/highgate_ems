@@ -9,7 +9,6 @@ import { ProgressAnaytic } from "../Components/ProgressAnalytic";
 import VolunteerSnapshot from "../Components/VolunteerSnapshot";
 import { VolunteeringAnalytic } from "../Components/VolunteeringAnalytic";
 import { SavingsAnalytic } from "../Components/SavingsAnalytic";
-import { Label, LineAxis } from "@mui/icons-material";
 import VolunteerMock from "../Data/VolunteerMock";
 import VolunteerNewsComponent from "../Components/VolunteerNews";
 import { CommentBoard } from "../Components/CommentBoard";
