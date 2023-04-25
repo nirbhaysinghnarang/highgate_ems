@@ -13,6 +13,8 @@ import {
 import Page from "../Components/Page";
 import Papa from 'papaparse';
 import { projectCSVUploadLambda } from "../Client/apiClient";
+import DoneOutlineIcon from '@mui/icons-material/DoneOutline';
+import { WarningOutlined } from "@mui/icons-material";
 const RootStyle = styled(Page)(({ theme }) => ({
     overflowY: "scroll",
     [theme.breakpoints.up("md")]: {
@@ -25,6 +27,7 @@ export default function ProjectUpload() {
     const [error, setError] = useState("");
     const [parsed, setParsed] = useState(null);
     const [loading, setLoading] = useState(false);
+    const [success, setSuccess] = useState(false);
 
     const inputStyles = {
         backgroundColor: "#f0f0f0",
@@ -85,9 +88,9 @@ export default function ProjectUpload() {
         }
         const map = parsed[2];
         if (map.hasOwnProperty("")) delete map[""]
-        const data = parsed.slice(3).map((elem)=>{
+        const data = parsed.slice(3).map((elem) => {
             const datum = {}
-            Object.keys(map).forEach(key=>{
+            Object.keys(map).forEach(key => {
                 datum[map[key]] = elem[key];
             })
             return datum;
@@ -96,10 +99,14 @@ export default function ProjectUpload() {
     }
 
     useEffect(() => {
-        if(parsed){
+        if (parsed) {
             console.log(extractFromParsed(parsed));
-            projectCSVUploadLambda(extractFromParsed(parsed)).then(response=>{
-                console.log(response);
+            projectCSVUploadLambda(extractFromParsed(parsed)).then(response => {
+                setLoading(false);
+                setSuccess(true);
+            }).catch(e => {
+                console.log(e)
+                setError(true);
             })
         }
     }, [parsed])
@@ -107,38 +114,58 @@ export default function ProjectUpload() {
     return (
         <RootStyle title="Upload Project CSV | My App">
             <Container maxWidth="sm">
-                <Box sx={{ my: 10, mx: "auto", maxWidth: 480, textAlign: "center" }}>
-                    <Typography variant="h3" gutterBottom>
-                        Upload Project CSV
-                    </Typography>
-                    <Typography sx={{ color: "text.secondary" }} variant="subtitle1">
-                        Please select a CSV file to upload
-                    </Typography>
+                {!success &&
+                    <Box sx={{ my: 10, mx: "auto", maxWidth: 480, textAlign: "center" }}>
+                        <Typography variant="h3" gutterBottom>
+                            Upload Project CSV
+                        </Typography>
+                        <Typography sx={{ color: "text.secondary" }} variant="subtitle1">
+                            Please select a CSV file to upload
+                        </Typography>
 
-                    {loading && <CircularProgress></CircularProgress>}
+                        {loading && <CircularProgress sx={{ marginTop: 1 }}></CircularProgress>}
 
-                    <Box component="form" onSubmit={handleFileSubmit} sx={{ mt: 5 }}>
-                        <FormControl sx={{ mb: 3 }} variant="outlined" fullWidth>
-                            <Input
-                                style={inputStyles}
-                                id="csv-file"
-                                type="file"
-                                accept=".csv"
-                                onChange={handleFileUpload}
-                            />
-                            {error && <FormHelperText error>{error}</FormHelperText>}
-                        </FormControl>
+                        <Box component="form" onSubmit={handleFileSubmit} sx={{ mt: 5 }}>
+                            <FormControl sx={{ mb: 3 }} variant="outlined" fullWidth>
+                                <Input
+                                    style={inputStyles}
+                                    id="csv-file"
+                                    type="file"
+                                    accept=".csv"
+                                    onChange={handleFileUpload}
+                                />
+                                {error && <FormHelperText error>{error}</FormHelperText>}
+                            </FormControl>
 
-                        <Button
-                            fullWidth
-                            type="submit"
-                            variant="contained"
-                            disabled={!file}
-                        >
-                            Upload
-                        </Button>
-                    </Box>
-                </Box>
+                            <Button
+                                fullWidth
+                                type="submit"
+                                variant="contained"
+                                disabled={!file}
+                            >
+                                Upload
+                            </Button>
+                        </Box>
+                    </Box>}
+                {success &&
+                    <Box sx={{ my: 10, mx: "auto", maxWidth: 480, textAlign: "center" }}>
+                        <Typography variant="h6" gutterBottom sx={{ color: "rgba(36,89,97,1)" }}>
+                            Successfully uploaded
+                        </Typography>
+                        <DoneOutlineIcon size={"large"} sx={{ color: 'rgba(36,89,97,1)' }}></DoneOutlineIcon>
+
+                    </Box>}
+
+                {error &&
+                    <Box sx={{ my: 10, mx: "auto", maxWidth: 480, textAlign: "center" }}>
+                        <Typography variant="h6" gutterBottom sx={{ color: "red" }}>
+                            There was a problem uploading your data.
+                        </Typography>
+                        <DoneOutlineIcon size={"large"} sx={{ color: 'red' }}></DoneOutlineIcon>
+
+                    </Box>}
+
+
             </Container>
         </RootStyle>
     );
