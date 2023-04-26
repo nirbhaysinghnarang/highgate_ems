@@ -82,6 +82,7 @@ export default function ProjectUpload() {
 
 
     const extractFromParsed = (parsed) => {
+        console.log(parsed);
         if (!parsed || parsed.length < 2) {
             setError(true);
             return;
@@ -100,7 +101,6 @@ export default function ProjectUpload() {
 
     useEffect(() => {
         if (parsed) {
-            console.log(extractFromParsed(parsed));
             projectCSVUploadLambda(extractFromParsed(parsed)).then(response => {
                 setLoading(false);
                 setSuccess(true);
@@ -161,7 +161,7 @@ export default function ProjectUpload() {
                         <Typography variant="h6" gutterBottom sx={{ color: "red" }}>
                             There was a problem uploading your data.
                         </Typography>
-                        <DoneOutlineIcon size={"large"} sx={{ color: 'red' }}></DoneOutlineIcon>
+                        <WarningOutlined size={"large"} sx={{ color: 'red' }}></WarningOutlined>
 
                     </Box>}
 
