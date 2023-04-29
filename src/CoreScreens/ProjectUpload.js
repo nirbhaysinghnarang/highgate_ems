@@ -164,8 +164,6 @@ export default function ProjectUpload() {
                         <WarningOutlined size={"large"} sx={{ color: 'red' }}></WarningOutlined>
 
                     </Box>}
-
-
             </Container>
         </RootStyle>
     );
