@@ -24,7 +24,7 @@ function App() {
             <Route path="/auth" element={<LoginScreen></LoginScreen>}/>
             <Route path="/home" element={<HomeScreen />} />
             <Route path="/projects/upload" element={<ProjectUpload></ProjectUpload>}/>
-            <Route path="*" element={<HomeScreen />} />
+            <Route path="*" element={<LoginScreen />} />
           </Routes>
         </Router>
       </Box>

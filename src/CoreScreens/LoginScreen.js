@@ -1,5 +1,6 @@
 import { styled } from "@mui/material/styles";
 import { useEffect, useState } from "react";
+import { store } from "../Redux/store";
 import PinInput from 'react-pin-input';
 
 import { TextField, Button, Stack, Card, Typography, Divider, Box, CircularProgress } from "@mui/material";
@@ -18,6 +19,7 @@ const RootStyle = styled(Page)(({ theme }) => ({
 
 export default function LoginScreen() {
     const [username, setUsername] = useState("");
+    const [userDetails, setUserDetails] = useState({})
     const [sentCode, setSentCode] = useState(false);
     const [error, setError] = useState(false);
     const [success, setSuccess] = useState(true);
@@ -36,16 +38,14 @@ export default function LoginScreen() {
         );
     };
 
-
     const handleSubmit = (event) => {
         setLoading(true)
         event.preventDefault();
         if (username !== "" && validateEmail(username)) {
             loginLambda(username).then(response => {
-                console.log(response)
                 if (response.data.statusCode === 200) {
                     setSuccess(true);
-                }else{
+                } else {
                     setError(true);
                     setSuccess(false);
                 }
@@ -62,29 +62,34 @@ export default function LoginScreen() {
 
     };
 
+    useEffect(()=>{
+        console.log(store.getState())
+    },[])
+
     useEffect(() => {
-        
         if (sentCode) {
-            console.log("Attempting verification")
             setLoading(true);
             verifyCodeLambda(pin, username).then(response => {
                 console.log(response)
-                if(response.data.statusCode==200){
+                if (response.data.statusCode == 200) {
                     setVerifSuccess(true)
-                }else{
+                    store.dispatch({
+                        "userEmail":username,
+                    })
+                } else {
                     setVerifError(true)
-                    if(response.data.statusCode==418){
+                    if (response.data.statusCode == 418) {
                         setErrorMessage("Your code has expired.")
-                    }else if(response.data.statusCode==423){
-                        setErrorMessage("You entered an incorrect code.")
+                    } else if (response.data.statusCode == 423) {
+                        setErrorMessage("You entered an incorrect code.\nTry again.")
                     }
-                    else{
+                    else {
                         setErrorMessage("An unknown error occured.")
                     }
                 }
-            }).catch((err)=>{
+            }).catch((err) => {
                 setVerifError(true)
-            }).finally(()=>{
+            }).finally(() => {
                 setLoading(false)
             })
         }
@@ -110,17 +115,22 @@ export default function LoginScreen() {
                             <Button sx={{ bgcolor: "rgba(36,89,97,1)" }} variant="contained" type="submit" >
                                 Send code.
                             </Button>
-                            
+
                         </Stack>
                     </form>
-                    {loading && <CircularProgress sx={{mt:2, mb:2}}></CircularProgress>}
-                    {sentCode && !success && <Typography variant="h5" color="red">
-                    The email entered does not exist.
-                </Typography>}
+                    {loading && <CircularProgress sx={{ mt: 2, mb: 2 }}></CircularProgress>}
+                    <Typography sx={{mt:2, color:"grey"}}> You only need to log in once. </Typography>
+
 
                 </Card>}
 
-               
+                {sentCode && !success && <Card sx={{ p: 3 }}>
+                    <Typography variant="subtitle2" color="grey">
+                        Invalid email.
+                    </Typography>
+                </Card>}
+
+
                 {sentCode && success &&
                     <Card sx={{ p: 3 }}>
                         <Typography variant="subtitle1">
@@ -141,7 +151,7 @@ export default function LoginScreen() {
                             autoSelect={true}
                             regexCriteria={/^[0-9]*$/}
                         />
-                        {loading && <CircularProgress sx={{mt:2, mb:2}}></CircularProgress>}
+                        {loading && <CircularProgress sx={{ mt: 2, mb: 2 }}></CircularProgress>}
                         {verifSuccess && <Typography>Success!</Typography>}
                         {verifError && <Typography>{errorMessage}</Typography>}
                     </Card>
