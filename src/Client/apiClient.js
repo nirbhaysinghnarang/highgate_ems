@@ -21,3 +21,8 @@ export async function verifyCodeLambda(code, email) {
     return await axios.post(endpoint, JSON.stringify(body));
 
 }
+
+export async function getProjects(){
+    const endpoint = API_URL+"/projects"
+    return await axios.get(endpoint)
+}
